@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="staff__list bg-white shadow-lg rounded">
+        <div class="staff__header px-8 flex justify-between py-4">
+            <h1 class="text-2xl font-bold text-blue-600">Danh sách nhân viên</h1>
+            <button id="loginModalButton" class="px-4 py-2 rounded bg-blue-600 text-white shadow-sm hover:bg-blue-700 transition">Thêm nhân
+                viên</button>
+        </div>
+        <div class="staff__content px-8 py-4 border-y-2 mb-8">
+            <div class="input__group border-2 flex rounded-md">
+                <input type="text" id="fillterNameInput" placeholder="Tên nhân viên" class="grow rounded-md p-2 px-4 focus:outline-0">
+                <button class="py-2 px-4">
+                    <i id="searchStaffButton" class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+            <table class="staff__table text-center mt-4 w-full border">
+                <tr class="text-blue-600">
+                    <th>
+                        Mã nhân viên
+                        <i class="fa-solid fa-arrow-up px-1 text-sm"></i>
+                    </th>
+                    <th>Họ và tên nhân viên</th>
+                    <th>Email</th>
+                    <th>Ngày sinh</th>
+                    <th>Chức vụ</th>
+                    <th><i class="fa-solid fa-gear"></i></th>
+                </tr>
+                <!-- <tr>
+                    <td>123456</td>
+                    <td>Nguyen</td>
+                    <td>hnhan793@gmail.com</td>
+                    <td>03/11/2000</td>
+                    <td>Sếp</td>
+                    <td>
+                        <button
+                            class="py-2 px-4 bg-teal-600 rounded-lg text-white hover:bg-teal-500 transition">Edit</button>
+                        <button
+                            class="py-2 px-4 bg-red-600 rounded-lg text-white hover:bg-red-500 transition">Delete</button>
+                    </td>
+                </tr> -->
+            </table>
+        </div>
+
+        <!-- Modal  -->
+        <div class="relative z-10 staff__logIn ease-out duration-300 ease-in duration-200" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+            <div class="fixed inset-0 z-10 overflow-y-auto">
+                <div class="flex min-h-full items-end justify-center p-4 sm:items-center sm:p-0">
+                    <div
+                        class="relative transform overflow-hidden rounded-lg bg-white shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                        <div class="text-center mb-8 mt-2">
+                            <h2 class="text-5xl font-semibold tracking-wider opacity-70">Log In</h2>
+                        </div>
+                        <div class="px-6 border-b-2">
+                            <form action="" class="modal__form px-2 pt-2 pb-4 rounded mb-6">
+                                <div class="form__input bg-white flex items-center">
+                                    <div class="py-1 border-r-2 border-slate-400 bg-gray-300 w-10 text-center">
+                                        <i class="fa-solid fa-user opacity-70"></i>
+                                    </div>
+                                    <input type="text" placeholder="Mã nhân viên" id="staffID" class="grow focus:outline-none px-2">
+                                </div>
+                                <div class="form__input bg-white flex items-center mt-3">
+                                    <div class="py-1 border-r-2 border-slate-400 bg-gray-300 w-10 text-center">
+                                        <i class="fa-regular fa-id-card"></i>
+                                    </div>
+                                    <input type="text" placeholder="Họ và tên" id="staffName" class="grow focus:outline-none px-2">
+                                </div>
+                                <div class="form__input bg-white flex items-center mt-3">
+                                    <div class="py-1 border-r-2 border-slate-400 bg-gray-300 w-10 text-center">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </div>
+                                    <input type="text" placeholder="Email" id="staffEmail" class="grow focus:outline-none px-2">
+                                </div>
+                                <div class="form__input bg-white flex items-center mt-3">
+                                    <div class="py-1 border-r-2 border-slate-400 bg-gray-300 w-10 text-center">
+                                        <i class="fa-solid fa-key"></i>
+                                    </div>
+                                    <input type="password" placeholder="Mật khẩu" id="staffPass" class="grow focus:outline-none px-2">
+                                </div>
+                                <div class="form__input bg-white flex items-center mt-3">
+                                    <div class="py-1 border-r-2 border-slate-400 bg-gray-300 w-10 text-center">
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                    </div>
+                                    <input type="date" id="staffDate" class="grow focus:outline-none px-2">
+                                </div>
+                                <div class="form__input bg-white flex items-center mt-3">
+                                    <div class="py-1 border-r-2 border-slate-400 bg-gray-300 w-10 text-center">
+                                        <i class="fa-solid fa-briefcase"></i>
+                                    </div>
+                                    <input type="text" placeholder="Chức vụ" id="staffOffice" class="grow focus:outline-none px-2">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="py-2 px-6 flex justify-end">
+                            <button id="addStaffButton" class="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-600 transition">Thêm người dùng</button>
+                            <button id="closeModalButton" class="bg-red-700 text-white px-4 py-2 rounded ml-2 hover:bg-red-600 transition">Đóng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>

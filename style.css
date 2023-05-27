@@ -1,0 +1,31 @@
+body {
+    background-image: linear-gradient(to right, #c6ffdd, #fbd786);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.staff__list {
+    width: 1100px;
+}
+
+.staff__table th,
+.staff__table td {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 16px 12px;
+}
+
+.modal__form {
+    background-image: linear-gradient(to right, #fbd786, #f7797d);
+}
+
+.staff__logIn {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.staff__logIn.staff__logIn--active {
+    opacity: 1;
+    visibility: visible;
+}
