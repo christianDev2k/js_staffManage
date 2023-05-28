@@ -81,7 +81,6 @@ getLocalStorage();
 
 addStaffButton.addEventListener('click', function () {
     !editFlagger ? addStaff() : editStaff();
-
 })
 
 loginModalButton.addEventListener('click', function () {
@@ -103,7 +102,7 @@ function addStaff() {
 
     staffList.addStaffMethod(item);
     setLocalStorage(staffList.staff);
-    form.reset();
+    resetForm();
     closeModal();
     displayStaff();
 }
@@ -176,12 +175,13 @@ function closeModal() {
 }
 
 function openModal() {
+    checkValidation();
     loginModal.classList.add('staff__logIn--active');
     if (editFlagger) {
         addStaffButton.innerHTML = 'Chỉnh sửa';
     }
     else {
-        form.reset();
+        resetForm();
         addStaffButton.innerHTML = 'Thêm thành viên';
     }
 }
@@ -209,6 +209,38 @@ function searchStaff() {
     }
 }
 
+function resetForm() {
+    staffID.style.color = '#000';
+    staffEmail.style.color = '#000';
+    form.reset();
+}
+
+function checkValidation() {
+    // const inputLogin = document.querySelectorAll('.form__input input');
+    const regexID = /^\d+$/;
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    staffID.addEventListener('change', function () {
+        if (regexID.test(staffID.value.trim())) {
+            this.style.color = 'green';
+            addStaffButton.disabled = false;
+        }
+        else {
+            this.style.color = 'red';
+            addStaffButton.disabled = true;
+        }
+    });
+    staffEmail.addEventListener('change', function () {
+        if (regexEmail.test(staffEmail.value.trim())) {
+            this.style.color = 'green';
+            addStaffButton.disabled = false;
+        }
+        else {
+            this.style.color = 'red';
+            addStaffButton.disabled = true;
+        }
+    });
+}
 
 
 
